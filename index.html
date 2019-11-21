@@ -139,6 +139,320 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-leetcode回文数解法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/21/leetcode%E5%9B%9E%E6%96%87%E6%95%B0%E8%A7%A3%E6%B3%95/">leetcode回文数解法</a>
+    </h1>
+  
+
+        
+        <a href="/2019/11/21/leetcode%E5%9B%9E%E6%96%87%E6%95%B0%E8%A7%A3%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2019-11-21T09:28:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code>判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。
+    例如：101  121    
+        来源:leetcode
+解题思路：
+个人思路：
+1、整数正负 、负数肯定不是回文数
+2、整数转String 截取头尾比较
+public  boolean method(int x){
+        if(x&lt;0){
+            return false;
+        }
+           String str=String.valueOf(x);
+        int length=str.length();
+            for(int i=0;i&lt;length/2;i++){
+                if(!str.substring(i,i+1).equals(str.substring(length-i-1,length-i))){
+                    return false;
+                }
+            }
+            return true;
+
+    }    
+
+
+
+
+leetcode借鉴思路：
+    和取对数一个处理方法 取对数是把低位数放高位数上 高位数放地位
+    回文数一个算法 把低位数放高位数组成一个新的数 与原先数字比较 相等就是回文数
+    public  boolean method2(int x){
+           if(x&lt;0){
+            return false;
+        }
+        long rem=0;
+        long y=0;
+        int quo=x;
+        while(quo!=0){
+            rem=quo%10;
+            y=y*10+rem;
+            quo=quo/10;
+        }
+        return y==x;
+    }</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/11/21/leetcode%E5%9B%9E%E6%96%87%E6%95%B0%E8%A7%A3%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-leetcode数字反转" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/21/leetcode%E6%95%B0%E5%AD%97%E5%8F%8D%E8%BD%AC/">leetcode数字反转</a>
+    </h1>
+  
+
+        
+        <a href="/2019/11/21/leetcode%E6%95%B0%E5%AD%97%E5%8F%8D%E8%BD%AC/" class="archive-article-date">
+  	<time datetime="2019-11-21T09:09:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code>    给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转
+        来源：leetcode
+    思路：
+    个人思路： 比较笨重
+    1、int 转换成char数组
+    2、判断正负数 负数-取出
+    3、stringbuilder append()方法；
+    4、转化为int
+     public int method2(int x) {
+    String str = String.valueOf(x);
+    char[] chars = str.toCharArray();
+    StringBuilder sb;
+    int length = chars.length;
+    int a = 0;
+    try {
+        if (x &gt;= 0) {
+            sb = new StringBuilder();
+            for (int i = length; i &gt; 0; i--) {
+                sb.append(chars[i - 1]);
+            }
+            a = Integer.parseInt(sb.toString());
+        } else {
+            sb = new StringBuilder(&quot;-&quot;);
+            sb.append(&quot;-&quot;);
+            for (int i = length; i &gt; 1; i--) {
+                sb.append(chars[i - 1]);
+            }
+            a = Integer.parseInt(sb.toString());
+        }
+    } catch (Exception e) {
+        return 0;
+    }
+    return a;
+
+}
+try catch的理由;溢出抓获异常；
+
+
+leetcode其他人思路：代码少 速度快
+    1、%10 取余数+0*10
+2、除10 取前一位的余数
+public int method1(int x) {
+    long rs = 0;
+    while (x != 0) {
+    rs = rs * 10 + x % 10;
+        x /= 10;
+    }
+    return (rs &lt; Integer.MIN_VALUE || rs &gt; Integer.MAX_VALUE) ? 0 : (int) rs;
+
+}</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/11/21/leetcode%E6%95%B0%E5%AD%97%E5%8F%8D%E8%BD%AC/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-leetCode两数之和" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/21/leetCode%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/">leetCode两数之和</a>
+    </h1>
+  
+
+        
+        <a href="/2019/11/21/leetCode%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" class="archive-article-date">
+  	<time datetime="2019-11-21T08:32:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。
+
+来源：leetcode
+
+解题思路：
+
+1、个人思路 暴力解决
+遍历数组中的每一个元素；需要同时满足target ==num[i]+num[j]和i!=j
+
+
+public int []method1(int []sums,int target){
+    for (int i = 0; i &lt;sums.length ; i++) {
+        for (int j = 1; j &lt;sums.length ; j++) {
+            if(sums[i]==target-sums[j]&amp;&amp;i!=j){
+                return new int[] {i,j};
+            }
+        }
+    }
+    throw new IllegalArgumentException(&quot;No two sum solution&quot;);
+}
+
+
+2、leetcode 其他人解法
+使用hash表 一次遍历完 把数组元素为key 下标为value；
+个人疑问 倘若参数为：{2，2，2，2，3} 和5 最后返回的数组为{3，4}；
+但是题目要求似乎也没要求是出现的第一个元素下标
+
+
+public static int[] method2(int[] nums, int target) {
+    Map&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();
+    for (int i = 0; i &lt; nums.length; i++) {
+        int complement = target - nums[i];
+    if (map.containsKey(complement)) {
+            return new int[] { map.get(complement), i };
+        }
+        map.put(nums[i], i);
+    }
+    throw new IllegalArgumentException(&quot;No two sum solution&quot;);
+}</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/11/21/leetCode%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-linux安装jdk1.8" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
