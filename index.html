@@ -139,6 +139,124 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-BeanDefinitionStoreException问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/24/BeanDefinitionStoreException%E9%97%AE%E9%A2%98/">BeanDefinitionStoreException问题</a>
+    </h1>
+  
+
+        
+        <a href="/2019/11/24/BeanDefinitionStoreException%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2019-11-24T07:00:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code>org.springframework.beans.factory.BeanDefinitionStoreException: IOException   connection time out
+
+出现原因：
+
+    spring—xxx.xml中mybatis-3-config.dtd下载不下来,所以一直连接超时；
+
+    我原先以为是数据库或者redis的 ，我都测试一下没问题，又考虑到是防火墙的问题
+
+    防火墙关闭之后还是不行；后来发现是这个文件没下载下来；
+
+    浪费了一天，也算是记录一下
+
+解决方案：
+
+    第一种：
+
+    1、把这个dtd文件下载下来 放在与xml同一个路径
+
+    2、&lt;!DOCTYPE configuration
+
+    PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;
+
+    &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt; 
+
+    的这个http://mybatis.org/dtd/mybatis-3-config.dtd 
+
+    替换为classpath:mybatis-3-config.dtd
+
+    第二种：
+
+    编译器中解决(idea)
+
+    1、在这个mybatis-3-config.dtd alt加insert引入Fetch external resource
+
+    2、引入失败的话需要设置代理
+
+        代理设置如下：
+
+        mac：
+
+        打开Appearance &amp; Behavior&gt; System Settings &gt; Http Proxy
+
+        点选 Auto-detect proxy settings &gt; Automatic proxy configuration URL
+
+        输入URL: http://127.0.0.1:1080即可。
+
+        win:
+
+        输入URL: http://127.0.0.1:1080/pac即可。
+
+        选第三个Manual proxy configuration
+
+        类型选HTTP
+
+        Host name：127.0.0.1    
+
+        Port number：1080</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/11/24/BeanDefinitionStoreException%E9%97%AE%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-leetcode回文数解法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

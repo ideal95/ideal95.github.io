@@ -6,13 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019/11 | ideal95的个人博客</title>
+  <title>BeanDefinitionStoreException问题 | ideal95的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="ideal95的个人博客">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;2019&#x2F;11&#x2F;index.html">
+  <meta name="description" content="org.springframework.beans.factory.BeanDefinitionStoreException: IOException   connection time out  出现原因：      spring—xxx.xml中mybatis-3-config.dtd下载不下来,所以一直连接超时；      我原先以为是数据库或者redis的 ，我都测试一下没问题，又考虑到是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BeanDefinitionStoreException问题">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;24&#x2F;BeanDefinitionStoreException%E9%97%AE%E9%A2%98&#x2F;index.html">
 <meta property="og:site_name" content="ideal95的个人博客">
+<meta property="og:description" content="org.springframework.beans.factory.BeanDefinitionStoreException: IOException   connection time out  出现原因：      spring—xxx.xml中mybatis-3-config.dtd下载不下来,所以一直连接超时；      我原先以为是数据库或者redis的 ，我都测试一下没问题，又考虑到是">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-24T07:12:39.807Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="ideal95的个人博客" type="application/atom+xml">
@@ -137,211 +140,211 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-BeanDefinitionStoreException问题" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      BeanDefinitionStoreException问题
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/24/BeanDefinitionStoreException%E9%97%AE%E9%A2%98/" class="archive-article-date">
+
+        
+        <a href="/2019/11/24/BeanDefinitionStoreException%E9%97%AE%E9%A2%98/" class="archive-article-date">
   	<time datetime="2019-11-24T07:00:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-24</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/24/BeanDefinitionStoreException%E9%97%AE%E9%A2%98/">BeanDefinitionStoreException问题</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code>org.springframework.beans.factory.BeanDefinitionStoreException: IOException   connection time out
 
-        <div class="article-info info-on-right">
-          
-          
+出现原因：
 
+    spring—xxx.xml中mybatis-3-config.dtd下载不下来,所以一直连接超时；
+
+    我原先以为是数据库或者redis的 ，我都测试一下没问题，又考虑到是防火墙的问题
+
+    防火墙关闭之后还是不行；后来发现是这个文件没下载下来；
+
+    浪费了一天，也算是记录一下
+
+解决方案：
+
+    第一种：
+
+    1、把这个dtd文件下载下来 放在与xml同一个路径
+
+    2、&lt;!DOCTYPE configuration
+
+    PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;
+
+    &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt; 
+
+    的这个http://mybatis.org/dtd/mybatis-3-config.dtd 
+
+    替换为classpath:mybatis-3-config.dtd
+
+    第二种：
+
+    编译器中解决(idea)
+
+    1、在这个mybatis-3-config.dtd alt加insert引入Fetch external resource
+
+    2、引入失败的话需要设置代理
+
+        代理设置如下：
+
+        mac：
+
+        打开Appearance &amp; Behavior&gt; System Settings &gt; Http Proxy
+
+        点选 Auto-detect proxy settings &gt; Automatic proxy configuration URL
+
+        输入URL: http://127.0.0.1:1080即可。
+
+        win:
+
+        输入URL: http://127.0.0.1:1080/pac即可。
+
+        选第三个Manual proxy configuration
+
+        类型选HTTP
+
+        Host name：127.0.0.1    
+
+        Port number：1080</code></pre>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" target="_blank" rel="noopener" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/24/BeanDefinitionStoreException%E9%97%AE%E9%A2%98/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/21/leetcode%E5%9B%9E%E6%96%87%E6%95%B0%E8%A7%A3%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2019-11-21T09:28:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-21</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/21/leetcode%E5%9B%9E%E6%96%87%E6%95%B0%E8%A7%A3%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">leetcode回文数解法</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/21/leetcode%E5%9B%9E%E6%96%87%E6%95%B0%E8%A7%A3%E6%B3%95/">leetcode回文数解法</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/21/leetcode%E6%95%B0%E5%AD%97%E5%8F%8D%E8%BD%AC/" class="archive-article-date">
-  	<time datetime="2019-11-21T09:09:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/21/leetcode%E6%95%B0%E5%AD%97%E5%8F%8D%E8%BD%AC/">leetcode数字反转</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/21/leetCode%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" class="archive-article-date">
-  	<time datetime="2019-11-21T08:32:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/21/leetCode%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/">leetCode两数之和</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/18/linux%E5%AE%89%E8%A3%85jdk1.8/" class="archive-article-date">
-  	<time datetime="2019-11-18T10:48:26.795Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/18/linux%E5%AE%89%E8%A3%85jdk1.8/">linux安装jdk1.8</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/18/linux%E5%AE%89%E8%A3%85tomcat/" class="archive-article-date">
-  	<time datetime="2019-11-18T10:42:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/18/linux%E5%AE%89%E8%A3%85tomcat/">linux安装tomcat</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/18/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2019-11-18T09:39:17.482Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/18/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">我的第一篇博客</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -364,8 +367,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
