@@ -139,6 +139,96 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-arraycopy方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/18/arraycopy%E6%96%B9%E6%B3%95/">arraycopy方法</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/18/arraycopy%E6%96%B9%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2019-12-18T09:38:12.880Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>title: arraycopy方法<br>date: 2019-12-18 17:30:06<br>tags:</p>
+<hr>
+<pre><code>System.class 
+
+public static native void arraycopy(Object var0, int var1, Object var2, int var3, int var4)
+
+第一次看到这个方法  以前没有用过 记录一下（比较好奇arraycopy的方法名为什么不是驼峰的）
+
+这个方法把一个数组中数据赋值到另一个数组里面
+
+    var0:被复制的数组；
+
+    var1:var0数组的下标,从第var开始复制；
+
+    var2:接受被复制数组数据的数组；
+
+    var3:var2数组的下标；复制到var2下标为var3的位置；
+
+    var4:需要复制的元素；也就是从var0中复制var4个元素进来；
+
+
+举例:
+
+    int[] arr1 ={1,2,3,4,5};
+
+    arrayCopy(arr1, 3, arr1, 2, 2);
+
+    意思是:将arr1从数字4开始 拷贝到arr1的数字3的位置, 拷贝2个数, 也就是说将4和5 拷贝到数字3的位置,相当于删除数字3.</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/18/arraycopy%E6%96%B9%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-idea-git问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
