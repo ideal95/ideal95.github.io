@@ -6,16 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>linux安装tomcat | ideal95的个人博客</title>
+  <title>controller疑问解惑 | ideal95的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前提：linux环境下有java环境变量如若没有自行安装 1.下载tomcat二进制文件 wget http:&#x2F;&#x2F;mirrors.hust.edu.cn&#x2F;apache&#x2F;tomcat&#x2F;tomcat-9&#x2F;v9.0.6&#x2F;bin&#x2F;apache-tomcat-9.0.6.tar.gz 2.解压缩apache-tomcat-9.0.6.tar.gz tar -xzvf apache-tomcat-9.0.6.">
+  <meta name="description" content="title: controller疑问解惑date: 2020-01-08 11:27:46tags:—      {key1=value1,key2=value2}的 疑惑 在别人的controller里面 看到了返回值类型是map 接口调用返回结果是  {         “key1”:&amp;quot;value1&amp;quot;,         &amp;quot;key2&amp;quot;:&amp;quot;va">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux安装tomcat">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;18&#x2F;linux%E5%AE%89%E8%A3%85tomcat&#x2F;index.html">
+<meta property="og:title" content="controller疑问解惑">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;08&#x2F;controller%E7%96%91%E9%97%AE%E8%A7%A3%E6%83%91&#x2F;index.html">
 <meta property="og:site_name" content="ideal95的个人博客">
-<meta property="og:description" content="前提：linux环境下有java环境变量如若没有自行安装 1.下载tomcat二进制文件 wget http:&#x2F;&#x2F;mirrors.hust.edu.cn&#x2F;apache&#x2F;tomcat&#x2F;tomcat-9&#x2F;v9.0.6&#x2F;bin&#x2F;apache-tomcat-9.0.6.tar.gz 2.解压缩apache-tomcat-9.0.6.tar.gz tar -xzvf apache-tomcat-9.0.6.">
+<meta property="og:description" content="title: controller疑问解惑date: 2020-01-08 11:27:46tags:—      {key1=value1,key2=value2}的 疑惑 在别人的controller里面 看到了返回值类型是map 接口调用返回结果是  {         “key1”:&amp;quot;value1&amp;quot;,         &amp;quot;key2&amp;quot;:&amp;quot;va">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-18T10:47:02.669Z">
+<meta property="og:updated_time" content="2020-01-08T03:41:05.967Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="ideal95的个人博客" type="application/atom+xml">
@@ -140,41 +140,51 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-linux安装tomcat" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-controller疑问解惑" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      linux安装tomcat
+      controller疑问解惑
     </h1>
   
 
         
-        <a href="/2019/11/18/linux%E5%AE%89%E8%A3%85tomcat/" class="archive-article-date">
-  	<time datetime="2019-11-18T10:42:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-18</time>
+        <a href="/2020/01/08/controller%E7%96%91%E9%97%AE%E8%A7%A3%E6%83%91/" class="archive-article-date">
+  	<time datetime="2020-01-08T03:41:05.967Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>前提：<br>linux环境下有java环境变量<br>如若没有自行安装</p>
-<p>1.下载tomcat二进制文件</p>
-<p>wget <a href="http://mirrors.hust.edu.cn/apache/tomcat/tomcat-9/v9.0.6/bin/apache-tomcat-9.0.6.tar.gz" target="_blank" rel="noopener">http://mirrors.hust.edu.cn/apache/tomcat/tomcat-9/v9.0.6/bin/apache-tomcat-9.0.6.tar.gz</a></p>
-<p>2.解压缩apache-tomcat-9.0.6.tar.gz</p>
-<p>tar -xzvf apache-tomcat-9.0.6.tar.gz</p>
-<p>3.移动到/usr/local/下</p>
-<p>mv apache-tomcat-9.0.6 /usr/local/apache-tomcat-9.0.6</p>
-<p>4.配置tomcat端口(默认8080)</p>
-<p>vi /usr/local/tomcat/conf/server.xml</p>
-<p>修改Connector port=”8080” protocol=”HTTP/1.1”</p>
-<p>5.启动tomcat</p>
-<p>/usr/local/tomcat/bin/startup.sh</p>
-<p>浏览器访问 <a href="http://ip:port" target="_blank" rel="noopener">http://ip:port</a></p>
-<p>验证是否启动成功</p>
+        <hr>
+<p>title: controller疑问解惑<br>date: 2020-01-08 11:27:46<br>tags:<br>—      {key1=value1,key2=value2}的 疑惑</p>
+<pre><code>在别人的controller里面 看到了返回值类型是map 接口调用返回结果是
 
+{
+        “key1”:&quot;value1&quot;,
+        &quot;key2&quot;:&quot;value2&quot;
+
+}
+
+这种格式的；
+
+印象中 正常的map格式应该是{key1=value1,key2=value2}；
+
+后来尝试了下写个接口测试一下 ，返回的确实是key：value 的格式；
+
+后来了解到应该是@ResopnseBody 这个注解 去解决返回值的格式；
+
+控制层的方法 是通过HttpMessageConverter中的方法实现的，因为它是一个接口，因此由其实现类完成转换。
+
+如果是bean对象，会调用对象的getXXX（）方法获取属性值并且以键值对的形式进行封装，转化为json串。如果是map集合，采用get(key)方式获取value值，然后进行封装。
+
+我又写个返回String类型的map；
+
+返回map.toString();对应的返回值就是map的原有格式{key1=value1,key2=value2}；</code></pre>
       
 
       
@@ -253,7 +263,7 @@
     <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/18/linux%E5%AE%89%E8%A3%85tomcat/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/08/controller%E7%96%91%E9%97%AE%E8%A7%A3%E6%83%91/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -267,18 +277,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/11/18/linux%E5%AE%89%E8%A3%85jdk1.8/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          linux安装jdk1.8
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/11/18/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">我的第一篇博客</div>
+    <a href="/2019/12/18/arraycopy%E6%96%B9%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">arraycopy方法</div>
       <i class="icon-circle-right"></i>
     </a>
   

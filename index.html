@@ -139,6 +139,92 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-controller疑问解惑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/08/controller%E7%96%91%E9%97%AE%E8%A7%A3%E6%83%91/">controller疑问解惑</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/08/controller%E7%96%91%E9%97%AE%E8%A7%A3%E6%83%91/" class="archive-article-date">
+  	<time datetime="2020-01-08T03:41:05.967Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>title: controller疑问解惑<br>date: 2020-01-08 11:27:46<br>tags:<br>—      {key1=value1,key2=value2}的 疑惑</p>
+<pre><code>在别人的controller里面 看到了返回值类型是map 接口调用返回结果是
+
+{
+        “key1”:&quot;value1&quot;,
+        &quot;key2&quot;:&quot;value2&quot;
+
+}
+
+这种格式的；
+
+印象中 正常的map格式应该是{key1=value1,key2=value2}；
+
+后来尝试了下写个接口测试一下 ，返回的确实是key：value 的格式；
+
+后来了解到应该是@ResopnseBody 这个注解 去解决返回值的格式；
+
+控制层的方法 是通过HttpMessageConverter中的方法实现的，因为它是一个接口，因此由其实现类完成转换。
+
+如果是bean对象，会调用对象的getXXX（）方法获取属性值并且以键值对的形式进行封装，转化为json串。如果是map集合，采用get(key)方式获取value值，然后进行封装。
+
+我又写个返回String类型的map；
+
+返回map.toString();对应的返回值就是map的原有格式{key1=value1,key2=value2}；</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/08/controller%E7%96%91%E9%97%AE%E8%A7%A3%E6%83%91/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-arraycopy方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -977,7 +1063,7 @@ public static int[] method2(int[] nums, int target) {
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 ideal95
+    		&copy; 2020 ideal95
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
